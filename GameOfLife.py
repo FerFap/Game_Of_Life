@@ -13,14 +13,18 @@ class GameOfLife:
             to_update[coord] = 0
 
         for x, y in self.game:
-            to_update[(x + 1, y)] = to_update.get((x + 1, y), 0) + 1
-            to_update[(x + 1, y - 1)] = to_update.get((x + 1, y - 1), 0) + 1
-            to_update[(x, y - 1)] = to_update.get((x, y - 1), 0) + 1
-            to_update[(x - 1, y - 1)] = to_update.get((x - 1, y - 1), 0) + 1
-            to_update[(x - 1, y)] = to_update.get((x - 1, y), 0) + 1
-            to_update[(x - 1, y + 1)] = to_update.get((x - 1, y + 1), 0) + 1
-            to_update[(x, y + 1)] = to_update.get((x, y + 1), 0) + 1
-            to_update[(x + 1, y + 1)] = to_update.get((x + 1, y + 1), 0) + 1
+            row_p_1 = x + 1
+            row_m_1 = x - 1
+            col_p_1 = y + 1
+            col_m_1 = y - 1
+            to_update[(row_p_1, y)] = to_update.get((row_p_1, y), 0) + 1
+            to_update[(row_p_1, col_m_1)] = to_update.get((row_p_1, col_m_1), 0) + 1
+            to_update[(x, col_m_1)] = to_update.get((x, col_m_1), 0) + 1
+            to_update[(row_m_1, col_m_1)] = to_update.get((row_m_1, col_m_1), 0) + 1
+            to_update[(row_m_1, y)] = to_update.get((row_m_1, y), 0) + 1
+            to_update[(row_m_1, col_p_1)] = to_update.get((row_m_1, col_p_1), 0) + 1
+            to_update[(x, col_p_1)] = to_update.get((x, col_p_1), 0) + 1
+            to_update[(row_p_1, col_p_1)] = to_update.get((row_p_1, col_p_1), 0) + 1
 
         for key, value in to_update.items():
             if (key in self.game) and (value < 2 or value > 3):
