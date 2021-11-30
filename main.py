@@ -16,8 +16,8 @@ def draw_grid(game, screen, offset_x, offset_y, width_block, height_block, width
         j = y * height_block + offset_y
         if 0 <= i < width and 0 <= j < height:
             py.draw.rect(screen, white, (i, j, width_block, height_block), 0)
-            py.draw.rect(screen, black, (i, j, width_block, height_block), 1)
-    print(len(game.game))
+            py.draw.rect(screen, gray, (i, j, width_block, height_block), 1)
+
 
 def main():
     main_clock = py.time.Clock()
@@ -34,7 +34,7 @@ def main():
     rows = width // width_block
     cols = height // height_block
     game = Game(rows, cols, int(rows * cols * 0.6))
-    
+
     update = True
     fps = 45
     d_x = 0
