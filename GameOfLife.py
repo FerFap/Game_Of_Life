@@ -2,10 +2,9 @@ from random import randint as ra
 
 
 class GameOfLife:
-    def __init__(self, width, height, cells=100):
+    def __init__(self, width, height, cells):
         self.game = {}
-        self.alive_cells = cells
-        self.generate_random(0, 0, width, height)
+        self.generate_random(0, 0, width, height, cells)
 
     def update(self):
         to_update = {}
@@ -32,5 +31,5 @@ class GameOfLife:
             elif not (key in self.game) and value == 3:
                 self.game.add(key)
 
-    def generate_random(self, start_x, start_y, width, height):
-        self.game = {(ra(start_x, start_x + width), ra(start_y, start_y + height)) for _ in range(self.alive_cells)}
+    def generate_random(self, start_x, start_y, width, height, alive_cells):
+        self.game = {(ra(start_x, start_x + width), ra(start_y, start_y + height)) for _ in range(alive_cells)}

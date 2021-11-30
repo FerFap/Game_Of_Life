@@ -17,13 +17,13 @@ def draw_grid(game, screen, offset_x, offset_y, width_block, height_block, width
         if 0 <= i < width and 0 <= j < height:
             py.draw.rect(screen, white, (i, j, width_block, height_block), 0)
             py.draw.rect(screen, black, (i, j, width_block, height_block), 1)
-
+    print(len(game.game))
 
 def main():
     main_clock = py.time.Clock()
     py.init()
-    width = 1700
-    height = 1000
+    width = 800
+    height = 800
     black = (0, 0, 0)
     screen = py.display.set_mode((width, height), py.RESIZABLE)
     width_block = 25
@@ -62,7 +62,7 @@ def main():
                     start_y = -offset_y // height_block
                     rows = width // width_block
                     cols = height // height_block
-                    game.generate_random(start_x, start_y, rows, cols)
+                    game.generate_random(start_x, start_y, rows, cols, int(rows * cols * 0.6))
                     del start_x, start_y, rows, cols
                 if event.key == py.K_a:
                     d_x = width_block
